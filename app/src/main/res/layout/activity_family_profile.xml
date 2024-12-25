@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextFamilyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fmaily Name" />
+
+        <EditText
+            android:id="@+id/editTextNumberOfChildrens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of childrens"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextChildrenAges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age of Children" />
+
+        <EditText
+            android:id="@+id/editTextFamilyDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Short Description"
+            android:lines="3" />
+
+        <EditText
+            android:id="@+id/editTextRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Region" />
+
+        <Button
+            android:id="@+id/buttonSubmitFamilyProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Profile" />
+    </LinearLayout>
+</ScrollView>
