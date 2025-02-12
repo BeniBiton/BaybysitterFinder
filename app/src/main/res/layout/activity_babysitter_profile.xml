@@ -49,6 +49,13 @@
             android:hint="Experience (Years)"
             android:inputType="number" />
 
+        <EditText
+            android:id="@+id/editTextPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="number" />
+
         <Button
             android:id="@+id/buttonUploadPicture"
             android:layout_width="match_parent"

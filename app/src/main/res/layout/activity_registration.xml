@@ -13,6 +13,7 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:hint="Email"
             android:inputType="textEmailAddress" />
 
@@ -20,6 +21,7 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:hint="Password"
             android:inputType="textPassword" />
 
@@ -27,12 +29,13 @@
             android:id="@+id/confirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:hint="Confirm Password"
             android:inputType="textPassword" />
 
         <RadioGroup
             android:id="@+id/userRoleGroup"
-            android:layout_width="377dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -40,19 +43,22 @@
                 android:id="@+id/roleBabysitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
                 android:text="Babysitter" />
 
             <RadioButton
                 android:id="@+id/roleFamily"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
                 android:text="Family" />
         </RadioGroup>
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/registrationButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:text="Register" />
     </LinearLayout>
 </ScrollView>

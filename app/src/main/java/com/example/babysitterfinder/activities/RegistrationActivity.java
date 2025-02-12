@@ -1,8 +1,8 @@
 package com.example.babysitterfinder.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,12 +20,11 @@ import java.util.Map;
 public class RegistrationActivity extends AppCompatActivity {
     private EditText emailEditText, passwordEditText, confirmPasswordEditText;
     private RadioGroup userTypeGroup;
-    private RadioButton registerButton;
+    private Button registerButton;
 
     private FirebaseAuthService authService;
     private FirestoreService firestoreService;
 
-    @SuppressLint("WrongViewCast")
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -38,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
         userTypeGroup = findViewById(R.id.userRoleGroup);
-        registerButton = findViewById(R.id.registerButton);
+        registerButton = findViewById(R.id.registrationButton);
 
         registerButton.setOnClickListener(v -> registerUser());
     }
@@ -83,11 +82,12 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void navigateToHomeScreen(String userType) {
-//        Intent intent = userType.equals("Babysitter") ?
-//                new Intent(this, HomeBabysitterActivity.class) :
-//                new Intent(this, HomeFamilyActivity.class);
-//        startActivity(intent);
+        Toast.makeText(this, "Navigating to " + userType + " screen", Toast.LENGTH_SHORT).show();
+        Intent intent = userType.equals("Babysitter") ?
+                new Intent(this, BabysitterProfileActivity.class) :
+                new Intent(this, FamilyProfileActivity.class);
 
+        startActivity(intent);
         finish();
     }
 

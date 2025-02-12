@@ -15,19 +15,29 @@ public class FirebaseAuthService {
     }
 
     // this function make register to user
+    //
     public void registerUser(String email, String password, OnCompleteListener<AuthResult> listener) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(listener);
     }
+
     // this function make sign in to app if we dosnt have already user
+    // GET
     public void loginUser(String email, String password, OnCompleteListener<AuthResult> listener) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(listener);
     }
+
     // get the current user after get in
-    public FirebaseUser getCurrentUser(){
+    // GET
+    public FirebaseUser getCurrentUser() {
         return firebaseAuth.getCurrentUser();
     }
+
     // this function make sign out by user
-    public void logoutUser(){
+    public void logoutUser() {
         firebaseAuth.signOut();
     }
 }
+
+/**
+ * GET POST PUT DELETE PATCH
+ */

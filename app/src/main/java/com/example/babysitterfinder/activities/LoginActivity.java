@@ -1,8 +1,10 @@
 package com.example.babysitterfinder.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +13,12 @@ import com.example.babysitterfinder.R;
 import com.example.babysitterfinder.services.FirebaseAuthService;
 import com.example.babysitterfinder.services.FirestoreService;
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private FirebaseAuthService authService;
     private FirestoreService firestoreService;
 
     private EditText emailEditText, passwordEditText;
+    private TextView goToRegistrationLink;
     private Button loginButton;
 
     @Override
@@ -23,13 +26,19 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.acitvity_login);
 
-        authService = new FirebaseAuthService();
+
+        authService = new FirebaseAuthService(); // create instance of db in my project
         firestoreService = new FirestoreService();
 
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
+        goToRegistrationLink = findViewById(R.id.goToRegistrationLink);
 
+        goToRegistrationLink.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+            startActivity(intent);
+        });
         loginButton.setOnClickListener(v -> loginUser());
     }
 
@@ -56,10 +65,10 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private void navigateToHomeScreen(String userType) {
-//        Intent intent = userType.equals("Babysitter") ?
-//                new Intent(this, HomeBabysitterActivity.class) :
-//                new Intent(this, HomeFamilyActivity.class);
-//        startActivity(intent);
+        Intent intent = userType.equals("Babysitter") ?
+                new Intent(this, HomeBabysitterActivity.class) :
+                new Intent(this, HomeFamilyActivity.class);
+        startActivity(intent);
         finish();
     }
 
