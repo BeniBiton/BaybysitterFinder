@@ -74,9 +74,15 @@ dependencies {
     implementation(libs.glide)
     implementation("com.google.firebase:firebase-auth:22.1.2")
     implementation("com.google.firebase:firebase-firestore:24.5.1")
-    implementation("com.google.android.gms:play-services-base:18.2.0") 
+    implementation("com.google.android.gms:play-services-base:18.2.0")
     implementation("com.google.android.material:material:1.8.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.6.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+
     kapt(libs.glide.compiler)
 }

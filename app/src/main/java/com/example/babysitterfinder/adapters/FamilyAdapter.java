@@ -58,6 +58,8 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyAdapter.FamilyView
         return familyList.size();
     }
 
+
+
     public static class FamilyViewHolder extends RecyclerView.ViewHolder {
         TextView familyName, familyLocation, familyNumOfChildren;
 

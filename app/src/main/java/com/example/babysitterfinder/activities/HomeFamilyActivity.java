@@ -3,6 +3,9 @@ package com.example.babysitterfinder.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.widget.SearchView;
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,16 +26,20 @@ public class HomeFamilyActivity extends AppCompatActivity {
     private RecyclerView babysitterRecycleView;
     private BabysitterAdapter babysitterAdapter;
     private List<Babysitter> babysitterList;
+    private List<Babysitter> originalBabysitterList;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_home_family);
 
+        searchView = findViewById(R.id.searchViewFamily);
         babysitterRecycleView = findViewById(R.id.recyclerViewBabysitters);
         babysitterRecycleView.setLayoutManager(new LinearLayoutManager(this));
 
         babysitterList = new ArrayList<>();
+        originalBabysitterList = new ArrayList<>();
         babysitterAdapter = new BabysitterAdapter(babysitterList, this, babysitterId -> {
             Intent intent = new Intent(HomeFamilyActivity.this, BabysitterViewActivity.class);
             intent.putExtra("BABYSITTER_ID", babysitterId);
@@ -41,6 +48,8 @@ public class HomeFamilyActivity extends AppCompatActivity {
         babysitterRecycleView.setAdapter(babysitterAdapter);
 
         fetchBabysitters();
+
+        setupSearchView();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -70,8 +79,11 @@ public class HomeFamilyActivity extends AppCompatActivity {
                                 ", Bio: " + babysitter.getBio());
                     }
                 }
+                originalBabysitterList.clear();
+                originalBabysitterList.addAll(babysitters);
+
                 babysitterList.clear();
-                babysitterList.addAll(babysitters);
+                babysitterList.addAll(originalBabysitterList);
                 babysitterAdapter.notifyDataSetChanged();
             }
 
@@ -82,6 +94,44 @@ public class HomeFamilyActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void setupSearchView() {
+        searchView.setFocusable(true);
+        searchView.setFocusableInTouchMode(true);
+        searchView.requestFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterBabysitters(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterBabysitters(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterBabysitters(String query) {
+        List<Babysitter> filteredList = new ArrayList<>();
+
+        if (query.isEmpty()) {
+            filteredList.addAll(originalBabysitterList);
+        } else {
+            for (Babysitter babysitter : originalBabysitterList) {
+                if (babysitter.getName().toLowerCase().contains(query.toLowerCase())) {
+                    filteredList.add(babysitter);
+                }
+            }
+        }
+
+        babysitterList.clear();
+        babysitterList.addAll(filteredList);
+        babysitterAdapter.notifyDataSetChanged();
+    }
+
 
 }
 

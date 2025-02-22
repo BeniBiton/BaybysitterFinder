@@ -1,5 +1,6 @@
 package com.example.babysitterfinder.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.babysitterfinder.R;
 import com.example.babysitterfinder.models.Family;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,6 +20,8 @@ public class FamilyViewActivity extends AppCompatActivity {
     private TextView viewName, viewNumOfChildren, viewLocation, viewChildrenAges, viewDescription, viewRegion;
     private FirebaseFirestore firestore;
     private FirebaseAuth authService;
+    private BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +39,17 @@ public class FamilyViewActivity extends AppCompatActivity {
         authService = FirebaseAuth.getInstance();
 
         loadFamilyProfile();
+
+        String currentId = getIntent().getStringExtra("FAMILY_ID");
+        if (currentId == null) {
+            bottomNavigationView = findViewById(R.id.bottom_navigation);
+            setupBottomNavigation();
+        }
     }
 
     private void loadFamilyProfile() {
         String familyId = getIntent().getStringExtra("FAMILY_ID");
-        if (familyId == null){
+        if (familyId == null) {
             familyId = authService.getCurrentUser().getUid();
         }
         Log.d("FamilyViewActivity", "Family ID: " + familyId);
@@ -67,5 +77,19 @@ public class FamilyViewActivity extends AppCompatActivity {
         viewChildrenAges.setText(family.getChildrenAges());
         viewDescription.setText(family.getDescription());
         viewRegion.setText(family.getRegion());
+    }
+
+    private void setupBottomNavigation() {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                startActivity(new Intent(FamilyViewActivity.this, HomeFamilyActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.nav_profile) {
+                return true;
+            }
+            return false;
+        });
     }
 }

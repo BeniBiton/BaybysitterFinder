@@ -1,10 +1,6 @@
 package com.example.babysitterfinder.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +26,8 @@ public class BabysitterAdapter extends RecyclerView.Adapter<BabysitterAdapter.Vi
     public interface OnBabysitterClickListener {
         void onClick(String babysitterId);
     }
-    public BabysitterAdapter(List<Babysitter> babysitterList, Context context, OnBabysitterClickListener clickListener){
+
+    public BabysitterAdapter(List<Babysitter> babysitterList, Context context, OnBabysitterClickListener clickListener) {
         this.babysitterList = babysitterList;
         this.context = context;
         this.clickListener = clickListener;
@@ -38,7 +35,7 @@ public class BabysitterAdapter extends RecyclerView.Adapter<BabysitterAdapter.Vi
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_babysitter, parent, false);
         return new ViewHolder(view);
     }
@@ -53,25 +50,24 @@ public class BabysitterAdapter extends RecyclerView.Adapter<BabysitterAdapter.Vi
                 babysitter.getBio() != null ? babysitter.getBio() : "Bio not available"
         );
 
-        String base64Image = babysitter.getProfilePictureUrl();
-        if (base64Image != null && !base64Image.isEmpty()) {
-            try {
-                byte[] decodedBytes = Base64.decode(base64Image, Base64.DEFAULT);
-                Glide.with(context)
-                        .asBitmap()
-                        .load(decodedBytes)
-                        .into(holder.babysitterImage);
-            } catch (IllegalArgumentException e) {
-                Glide.with(context)
-                        .load(R.drawable.ic_profile_placeholder)
-                        .into(holder.babysitterImage);
-                Log.e("BabysitterAdapter", "Invalid Base64 Image", e);
-            }
+        String imageUrl = babysitter.getProfilePictureUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Glide.with(context)
+                    .load(imageUrl)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_profile_placeholder)
+                    .error(R.drawable.ic_profile_placeholder)
+                    .into(holder.babysitterImage);
         } else {
             Glide.with(context)
                     .load(R.drawable.ic_profile_placeholder)
                     .into(holder.babysitterImage);
         }
+
+        holder.itemView.setOnClickListener(view -> {
+            String babysitterId = babysitter.getFirestoreDocumentId();
+            clickListener.onClick(babysitterId);
+        });
 
 
         holder.itemView.setOnClickListener(view -> {
@@ -85,11 +81,18 @@ public class BabysitterAdapter extends RecyclerView.Adapter<BabysitterAdapter.Vi
         return babysitterList.size();
     }
 
+    public void updateList(List<Babysitter> newList) {
+        babysitterList.clear();
+        babysitterList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView babysitterName, babysitterDescription;
         ImageView babysitterImage;
 
-        public ViewHolder(@NonNull View itemView){
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             babysitterName = itemView.findViewById(R.id.babysitterName);
             babysitterDescription = itemView.findViewById(R.id.babysitterDescription);
