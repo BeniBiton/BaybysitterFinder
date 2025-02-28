@@ -13,19 +13,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/purple_500"
-        android:elevation="6dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:padding="12dp"
+        android:fontFamily="serif"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         android:text="Available Babysitters"
-        android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewFamily"
-        android:layout_width="match_parent"
+        android:layout_width="325dp"
         android:layout_height="50dp"
         android:layout_below="@id/titleTextView"
         android:layout_marginStart="16dp"
@@ -40,6 +38,16 @@
         android:padding="8dp"
         android:queryHint="Search babysitters..." />
 
+    <ImageView
+        android:id="@+id/favoritesBabysitters"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/titleTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_favorite_border"
+        android:contentDescription="Favorites Button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBabysitters"

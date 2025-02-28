@@ -2,12 +2,18 @@ package com.example.babysitterfinder.services;
 
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.babysitterfinder.models.Babysitter;
 import com.example.babysitterfinder.models.Family;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +37,7 @@ public class FirestoreService {
         firestore.collection("users").document(userId).get().addOnCompleteListener(listener);
     }
 
-    public static void saveBabysitterProfile(Babysitter babysitter,String babysitterId,  FirestoreCallback callback) {
+    public static void saveBabysitterProfile(Babysitter babysitter, String babysitterId, FirestoreCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         babysitter.setFirestoreDocumentId(babysitterId);
@@ -102,6 +108,80 @@ public class FirestoreService {
                     callback.onFailure(e);
                 });
 
+    }
+
+    public void fetchFavorites(String familyId, BabysitterCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("family").document(familyId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists() && documentSnapshot.contains("favorites")) {
+                        List<String> favoriteIds = (List<String>) documentSnapshot.get("favorites");
+
+                        if (favoriteIds == null || favoriteIds.isEmpty()) {
+                            callback.onSuccess(new ArrayList<>());
+                            return;
+                        }
+
+                        db.collection("babysitter")
+                                .whereIn(FieldPath.documentId(), favoriteIds)
+                                .get()
+                                .addOnSuccessListener(queryDocumentSnapshots -> {
+                                    List<Babysitter> favoriteBabysitters = new ArrayList<>();
+
+                                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                                        Log.d("fetchFavorites", "Fetched babysitter ID: " + doc.getId());
+                                        Babysitter babysitter = doc.toObject(Babysitter.class);
+                                        babysitter.setFirestoreDocumentId(doc.getId()); // Ensure ID is set
+                                        favoriteBabysitters.add(babysitter);
+                                    }
+
+                                    callback.onSuccess(favoriteBabysitters);
+                                })
+                                .addOnFailureListener(callback::onFailure);
+                    } else {
+                        callback.onSuccess(new ArrayList<>());
+                    }
+                })
+                .addOnFailureListener(callback::onFailure);
+    }
+
+    public void fetchFavorites(String babysitterId, FamilyCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("babysitter").document(babysitterId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists() && documentSnapshot.contains("favorites")) {
+                        List<String> favoriteIds = (List<String>) documentSnapshot.get("favorites");
+
+                        if (favoriteIds == null || favoriteIds.isEmpty()) {
+                            callback.onSuccess(new ArrayList<>());
+                            return;
+                        }
+
+                        db.collection("family")
+                                .whereIn(FieldPath.documentId(), favoriteIds)
+                                .get()
+                                .addOnSuccessListener(queryDocumentSnapshots -> {
+                                    List<Family> favoriteFamilies = new ArrayList<>();
+
+                                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                                        Log.d("fetchFavorites", "Fetched family ID: " + doc.getId());
+                                        Family family = doc.toObject(Family.class);
+                                        family.setFirestoreDocumentId(doc.getId());
+                                        favoriteFamilies.add(family);
+                                    }
+
+                                    callback.onSuccess(favoriteFamilies);
+                                })
+                                .addOnFailureListener(callback::onFailure);
+                    } else {
+                        callback.onSuccess(new ArrayList<>());
+                    }
+                })
+                .addOnFailureListener(callback::onFailure);
     }
 
 

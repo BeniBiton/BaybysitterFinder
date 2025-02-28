@@ -33,11 +33,4 @@ public class FirebaseStorageService {
             Toast.makeText(activity, "Image upload failed", Toast.LENGTH_SHORT).show();
         }));
     }
-
-    public static Uri handleActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == IMAGE_PICKER_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            return data.getData();
-        }
-        return null;
-    }
 }

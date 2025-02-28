@@ -11,13 +11,12 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
         android:elevation="6dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:padding="12dp"
         android:text="Available Families"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,10 +25,10 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewBabysitter"
-        android:layout_width="match_parent"
+        android:layout_width="325dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/search_background"
         android:clickable="true"
@@ -40,8 +39,21 @@
         android:padding="8dp"
         android:queryHint="Search families..."
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <ImageView
+        android:id="@+id/favoritesFamilies"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_favorite_border"
+        android:contentDescription="Favorites Button"
+        app:layout_constraintTop_toTopOf="@id/searchViewBabysitter"
+        app:layout_constraintBottom_toBottomOf="@id/searchViewBabysitter"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFamilies"

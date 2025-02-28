@@ -4,18 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.appcompat.widget.SearchView;
-
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.babysitterfinder.R;
 import com.example.babysitterfinder.adapters.FamilyAdapter;
-import com.example.babysitterfinder.models.Babysitter;
 import com.example.babysitterfinder.models.Family;
 import com.example.babysitterfinder.services.FirestoreService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,6 +29,9 @@ public class HomeBabysitterActivity extends AppCompatActivity {
     private List<Family> familyList;
     private List<Family> originalFamilyList;
     private SearchView searchView;
+    private ImageView favoriteIcon;
+    private boolean showingFavorites = false;
+    private String babysitterId;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,6 +40,7 @@ public class HomeBabysitterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_babysitters);
 
         searchView = findViewById(R.id.searchViewBabysitter);
+        favoriteIcon = findViewById(R.id.favoritesFamilies);  // Changed from Button to ImageView
         familyRecyclerView = findViewById(R.id.recyclerViewFamilies);
         familyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,13 +48,28 @@ public class HomeBabysitterActivity extends AppCompatActivity {
         originalFamilyList = new ArrayList<>();
         familyAdapter = new FamilyAdapter(familyList, this, familyId -> {
             Intent intent = new Intent(HomeBabysitterActivity.this, FamilyViewActivity.class);
+            Log.d("ID testing", familyId);
             intent.putExtra("FAMILY_ID", familyId);
             startActivity(intent);
         });
         familyRecyclerView.setAdapter(familyAdapter);
 
+        babysitterId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         fetchFamilies();
         setupSearchView();
+
+        favoriteIcon.setOnClickListener(view -> {
+            if (showingFavorites) {
+                fetchFamilies();
+                favoriteIcon.setImageResource(R.drawable.ic_favorite_filled);
+                showingFavorites = false;
+            } else {
+                fetchFavoriteFamilies();
+                favoriteIcon.setImageResource(R.drawable.ic_favorite_border);
+                showingFavorites = true;
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(menuItem -> {
@@ -59,8 +77,7 @@ public class HomeBabysitterActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     return true;
                 case R.id.nav_profile:
-                    Intent intent = new Intent(HomeBabysitterActivity.this, BabysitterViewActivity.class);
-                    ;
+                    Intent intent = new Intent(HomeBabysitterActivity.this, OwnBabysitterProfile.class);
                     startActivity(intent);
                     return true;
                 default:
@@ -75,26 +92,44 @@ public class HomeBabysitterActivity extends AppCompatActivity {
             @Override
             public void onSuccess(List<Family> families) {
                 Log.d("HomeBabysitterActivity", "Families fetched: " + families.size());
-                if (families.size() > 1) {
-                    for (Family family : families) {
-                        Log.d("HomeBabysitterActivity", "Family: " + family.getFamilyName());
-                    }
-                } else {
-                    Log.d("HomeBabysitterActivity", "Only one family fetched.");
+                if (families.isEmpty()) {
+                    Toast.makeText(HomeBabysitterActivity.this, "No families found.", Toast.LENGTH_SHORT).show();
                 }
-                familyList.clear();
-                originalFamilyList.clear();
 
-                familyList.addAll(families);
+                originalFamilyList.clear();
                 originalFamilyList.addAll(families);
 
+                familyList.clear();
+                familyList.addAll(originalFamilyList);
                 familyAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Exception e) {
                 Log.e("HomeBabysitterActivity", "Error fetching families", e);
-                Toast.makeText(HomeBabysitterActivity.this, "Failed to load families: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeBabysitterActivity.this, "Failed to load families.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void fetchFavoriteFamilies() {
+        FirestoreService firestoreService = new FirestoreService();
+        firestoreService.fetchFavorites(babysitterId, new FirestoreService.FamilyCallback() {
+            @Override
+            public void onSuccess(List<Family> favoriteFamilies) {
+                if (favoriteFamilies.isEmpty()) {
+                    Toast.makeText(HomeBabysitterActivity.this, "No favorite families found.", Toast.LENGTH_SHORT).show();
+                }
+
+                familyList.clear();
+                familyList.addAll(favoriteFamilies);
+                familyAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("HomeBabysitterActivity", "Error fetching favorite families", e);
+                Toast.makeText(HomeBabysitterActivity.this, "Failed to load favorite families.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -135,5 +170,4 @@ public class HomeBabysitterActivity extends AppCompatActivity {
         familyList.addAll(filteredList);
         familyAdapter.notifyDataSetChanged();
     }
-
 }

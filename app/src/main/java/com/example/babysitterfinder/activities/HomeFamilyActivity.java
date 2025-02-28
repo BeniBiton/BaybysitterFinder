@@ -1,14 +1,14 @@
 package com.example.babysitterfinder.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.appcompat.widget.SearchView;
-
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,26 +17,32 @@ import com.example.babysitterfinder.adapters.BabysitterAdapter;
 import com.example.babysitterfinder.models.Babysitter;
 import com.example.babysitterfinder.services.FirestoreService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFamilyActivity extends AppCompatActivity {
 
-    private RecyclerView babysitterRecycleView;
+    private RecyclerView babysitterRecyclerView;
+    private ImageView favoriteIcon;
     private BabysitterAdapter babysitterAdapter;
     private List<Babysitter> babysitterList;
     private List<Babysitter> originalBabysitterList;
     private SearchView searchView;
+    private boolean showingFavorites = false;
+    private String familyId;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_home_family);
 
         searchView = findViewById(R.id.searchViewFamily);
-        babysitterRecycleView = findViewById(R.id.recyclerViewBabysitters);
-        babysitterRecycleView.setLayoutManager(new LinearLayoutManager(this));
+        favoriteIcon = findViewById(R.id.favoritesBabysitters);
+        babysitterRecyclerView = findViewById(R.id.recyclerViewBabysitters);
+        babysitterRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         babysitterList = new ArrayList<>();
         originalBabysitterList = new ArrayList<>();
@@ -45,11 +51,24 @@ public class HomeFamilyActivity extends AppCompatActivity {
             intent.putExtra("BABYSITTER_ID", babysitterId);
             startActivity(intent);
         });
-        babysitterRecycleView.setAdapter(babysitterAdapter);
+        babysitterRecyclerView.setAdapter(babysitterAdapter);
+
+        familyId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         fetchBabysitters();
-
         setupSearchView();
+
+        favoriteIcon.setOnClickListener(view -> {
+            if (showingFavorites) {
+                fetchBabysitters();
+                favoriteIcon.setImageResource(R.drawable.ic_favorite_filled);
+                showingFavorites = false;
+            } else {
+                fetchFavoriteBabysitters();
+                favoriteIcon.setImageResource(R.drawable.ic_favorite_border);
+                showingFavorites = true;
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -57,7 +76,7 @@ public class HomeFamilyActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     return true;
                 case R.id.nav_profile:
-                    Intent intent = new Intent(HomeFamilyActivity.this, FamilyViewActivity.class);
+                    Intent intent = new Intent(HomeFamilyActivity.this, OwnFamilyProfile.class);
                     startActivity(intent);
                     return true;
                 default:
@@ -91,6 +110,28 @@ public class HomeFamilyActivity extends AppCompatActivity {
             public void onFailure(Exception e) {
                 Log.e("HomeFamilyActivity", "Error fetching babysitters", e);
                 Toast.makeText(HomeFamilyActivity.this, "Failed to load babysitters.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void fetchFavoriteBabysitters() {
+        FirestoreService firestoreService = new FirestoreService();
+        firestoreService.fetchFavorites(familyId, new FirestoreService.BabysitterCallback() {
+            @Override
+            public void onSuccess(List<Babysitter> favoriteBabysitters) {
+                if (favoriteBabysitters.isEmpty()) {
+                    Toast.makeText(HomeFamilyActivity.this, "No favorite babysitters found.", Toast.LENGTH_SHORT).show();
+                }
+
+                babysitterList.clear();
+                babysitterList.addAll(favoriteBabysitters);
+                babysitterAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("HomeFamilyActivity", "Error fetching favorite babysitters", e);
+                Toast.makeText(HomeFamilyActivity.this, "Failed to load favorite babysitters.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -131,7 +172,4 @@ public class HomeFamilyActivity extends AppCompatActivity {
         babysitterList.addAll(filteredList);
         babysitterAdapter.notifyDataSetChanged();
     }
-
-
 }
-

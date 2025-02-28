@@ -6,9 +6,7 @@
         <item name="colorSecondary">@color/teal_200</item>
 
         <item name="android:statusBarColor">@color/purple_700</item>
-
         <item name="android:windowBackground">@color/white</item>
-
-        <item name="buttonStyle">@style/Widget.MaterialComponents.Button</item>
     </style>
+
 </resources>

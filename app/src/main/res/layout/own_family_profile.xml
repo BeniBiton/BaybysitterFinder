@@ -5,14 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activities.FamilyViewActivity">
+    tools:context=".activities.OwnFamilyProfile">
+
+    <ImageView
+        android:id="@+id/logoutIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Logout"
+        android:padding="8dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@id/favoriteButton"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/logoutIcon">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
-                android:text="⭐ Rate This Family"
+                android:text="⭐ Rate this family"
                 android:textColor="@color/dark_gray"
                 android:textSize="16sp" />
 
@@ -130,27 +142,23 @@
                 android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:isIndicator="false"
                 android:numStars="5"
                 android:rating="0"
-                android:stepSize="0.5" />
+                android:stepSize="1.0" />
+
         </LinearLayout>
+
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/favoriteButton"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="Add to favorites"
-        android:elevation="8dp"
-        android:padding="12dp"
-        app:fabSize="normal"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_favorite_border"
-        app:tint="@color/red" />
+        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

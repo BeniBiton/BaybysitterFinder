@@ -1,5 +1,8 @@
 package com.example.babysitterfinder.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Babysitter {
     private String Name;
     private int Age;
@@ -10,9 +13,18 @@ public class Babysitter {
     private int phoneNumber;
     private String profilePictureUrl;
     private String firestoreDocumentId;
+    private float rating;
+    private int ratingCount;
+
+
+    private List<String> favorites;
 
     public Babysitter() {
+        this.favorites = new ArrayList<>();
+        this.rating = 0.0f;
+        this.ratingCount = 0;
     }
+
 
     public Babysitter(String name, int age, String region, String bio, String availability, int experience, int phoneNumber, String profilePictureUrl) {
         this.Name = name;
@@ -23,6 +35,9 @@ public class Babysitter {
         this.Experience = experience;
         this.phoneNumber = phoneNumber;
         this.profilePictureUrl = profilePictureUrl;
+        this.favorites = new ArrayList<>();
+        this.rating = 0.0f;
+        this.ratingCount = 0;
     }
 
     public String getName() {
@@ -88,6 +103,7 @@ public class Babysitter {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public String getFirestoreDocumentId() {
         return firestoreDocumentId;
     }
@@ -95,5 +111,22 @@ public class Babysitter {
     public void setFirestoreDocumentId(String firestoreDocumentId) {
         this.firestoreDocumentId = firestoreDocumentId;
     }
+
+    public List<String> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<String> favorites) {
+        this.favorites = favorites;
+    }
+
+    public void addFavorite(String userId) {
+        if (!favorites.contains(userId)) {
+            favorites.add(userId);
+        }
+    }
+
+
+
 
 }
