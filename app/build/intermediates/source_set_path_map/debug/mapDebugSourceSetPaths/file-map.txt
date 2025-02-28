@@ -1,0 +1,73 @@
+com.example.babysitterfinder.app-browser-1.4.0-0 C:\Users\benbi\.gradle\caches\8.9\transforms\06f3bc7da7996963bd091e6766cfd83f\transformed\browser-1.4.0\res
+com.example.babysitterfinder.app-customview-poolingcontainer-1.0.0-1 C:\Users\benbi\.gradle\caches\8.9\transforms\07286430809593c157ac9240fc685c18\transformed\customview-poolingcontainer-1.0.0\res
+com.example.babysitterfinder.app-drawerlayout-1.1.1-2 C:\Users\benbi\.gradle\caches\8.9\transforms\15a96b16f63c6ab5c4b89a38a4df4707\transformed\drawerlayout-1.1.1\res
+com.example.babysitterfinder.app-lifecycle-viewmodel-ktx-2.8.7-3 C:\Users\benbi\.gradle\caches\8.9\transforms\1bab7b85796cfae2b3bb0d367e67f6e2\transformed\lifecycle-viewmodel-ktx-2.8.7\res
+com.example.babysitterfinder.app-ui-release-4 C:\Users\benbi\.gradle\caches\8.9\transforms\1c0bad6559473db51c02ee87bf0af83b\transformed\ui-release\res
+com.example.babysitterfinder.app-profileinstaller-1.3.1-5 C:\Users\benbi\.gradle\caches\8.9\transforms\1de7e4325803952cd1a2b1d9147b6cf2\transformed\profileinstaller-1.3.1\res
+com.example.babysitterfinder.app-animation-core-release-6 C:\Users\benbi\.gradle\caches\8.9\transforms\21990b5b9baf0f5bc691ea1d95d56e67\transformed\animation-core-release\res
+com.example.babysitterfinder.app-lifecycle-viewmodel-release-7 C:\Users\benbi\.gradle\caches\8.9\transforms\289a5d7bf0178a42f4d7514d2f635919\transformed\lifecycle-viewmodel-release\res
+com.example.babysitterfinder.app-core-ktx-1.15.0-8 C:\Users\benbi\.gradle\caches\8.9\transforms\2c412a5e7f77fc2d4db26d0ae4260ee4\transformed\core-ktx-1.15.0\res
+com.example.babysitterfinder.app-lifecycle-runtime-ktx-release-9 C:\Users\benbi\.gradle\caches\8.9\transforms\2d30f21a2ba5ddc3e1fd9117e96ee91e\transformed\lifecycle-runtime-ktx-release\res
+com.example.babysitterfinder.app-glide-4.15.1-10 C:\Users\benbi\.gradle\caches\8.9\transforms\33738275e736fdb1a51ad4c9641ac205\transformed\glide-4.15.1\res
+com.example.babysitterfinder.app-lifecycle-process-2.8.7-11 C:\Users\benbi\.gradle\caches\8.9\transforms\3503f925a868bedcda96ef69a96f16ae\transformed\lifecycle-process-2.8.7\res
+com.example.babysitterfinder.app-material-1.10.0-12 C:\Users\benbi\.gradle\caches\8.9\transforms\3571edd860eaaef0e36b957f67a1c0da\transformed\material-1.10.0\res
+com.example.babysitterfinder.app-play-services-auth-20.7.0-13 C:\Users\benbi\.gradle\caches\8.9\transforms\36339818ced8a0cddfad8cbf2156f48b\transformed\play-services-auth-20.7.0\res
+com.example.babysitterfinder.app-recyclerview-1.3.2-14 C:\Users\benbi\.gradle\caches\8.9\transforms\3b7e49d048281f3f1624ca57a7d2e301\transformed\recyclerview-1.3.2\res
+com.example.babysitterfinder.app-core-1.15.0-15 C:\Users\benbi\.gradle\caches\8.9\transforms\3e89dce3ba4114c8665b9ce52a511c43\transformed\core-1.15.0\res
+com.example.babysitterfinder.app-cardview-1.0.0-16 C:\Users\benbi\.gradle\caches\8.9\transforms\3ec23293666ca5f7a41311b1f705285a\transformed\cardview-1.0.0\res
+com.example.babysitterfinder.app-constraintlayout-2.0.1-17 C:\Users\benbi\.gradle\caches\8.9\transforms\4211145344045645c420a0605067d4a8\transformed\constraintlayout-2.0.1\res
+com.example.babysitterfinder.app-runtime-release-18 C:\Users\benbi\.gradle\caches\8.9\transforms\4540e52d2d83bfbff4177742a0e36a5b\transformed\runtime-release\res
+com.example.babysitterfinder.app-animation-release-19 C:\Users\benbi\.gradle\caches\8.9\transforms\4a301d6e93b8cfbf9412f9b898c4ad6f\transformed\animation-release\res
+com.example.babysitterfinder.app-ui-graphics-release-20 C:\Users\benbi\.gradle\caches\8.9\transforms\4f0028bf1c2a2031ceefdc1beaa89d26\transformed\ui-graphics-release\res
+com.example.babysitterfinder.app-activity-ktx-1.9.3-21 C:\Users\benbi\.gradle\caches\8.9\transforms\501f698772baa76c4d14d670980942ae\transformed\activity-ktx-1.9.3\res
+com.example.babysitterfinder.app-ui-geometry-release-22 C:\Users\benbi\.gradle\caches\8.9\transforms\5082e1fbbf645202c1d6f6934c8f3559\transformed\ui-geometry-release\res
+com.example.babysitterfinder.app-fragment-1.5.4-23 C:\Users\benbi\.gradle\caches\8.9\transforms\514c5cd9194ee6a44a13e9d01a8d06b6\transformed\fragment-1.5.4\res
+com.example.babysitterfinder.app-lifecycle-livedata-core-2.8.7-24 C:\Users\benbi\.gradle\caches\8.9\transforms\534dd3c85aef8191b1a3328ecd39baa8\transformed\lifecycle-livedata-core-2.8.7\res
+com.example.babysitterfinder.app-firebase-common-21.0.0-25 C:\Users\benbi\.gradle\caches\8.9\transforms\5791a3769915364bafa2b35d5a7903ce\transformed\firebase-common-21.0.0\res
+com.example.babysitterfinder.app-play-services-base-18.2.0-26 C:\Users\benbi\.gradle\caches\8.9\transforms\57ab2713f0a621aeb137978dc852c526\transformed\play-services-base-18.2.0\res
+com.example.babysitterfinder.app-lifecycle-viewmodel-savedstate-2.8.7-27 C:\Users\benbi\.gradle\caches\8.9\transforms\5d3907bea4b3131f44722b7b64e49125\transformed\lifecycle-viewmodel-savedstate-2.8.7\res
+com.example.babysitterfinder.app-runtime-saveable-release-28 C:\Users\benbi\.gradle\caches\8.9\transforms\5d553d83c4c318e01dfdab9e1d55f2ea\transformed\runtime-saveable-release\res
+com.example.babysitterfinder.app-lifecycle-runtime-release-29 C:\Users\benbi\.gradle\caches\8.9\transforms\608304444b11bab0710bf9af093b8967\transformed\lifecycle-runtime-release\res
+com.example.babysitterfinder.app-material-ripple-release-30 C:\Users\benbi\.gradle\caches\8.9\transforms\60f3978ee7f206d0da24e10add9d0408\transformed\material-ripple-release\res
+com.example.babysitterfinder.app-emoji2-1.3.0-31 C:\Users\benbi\.gradle\caches\8.9\transforms\70266aeb1adcee8b0a44db5e9328a7f4\transformed\emoji2-1.3.0\res
+com.example.babysitterfinder.app-emoji2-views-helper-1.3.0-32 C:\Users\benbi\.gradle\caches\8.9\transforms\78b8871571b970fe21bbd4831800bad4\transformed\emoji2-views-helper-1.3.0\res
+com.example.babysitterfinder.app-credentials-1.2.0-rc01-33 C:\Users\benbi\.gradle\caches\8.9\transforms\7f583ac4e7972c6e8c4cb3ef35ab5e54\transformed\credentials-1.2.0-rc01\res
+com.example.babysitterfinder.app-lifecycle-livedata-2.8.7-34 C:\Users\benbi\.gradle\caches\8.9\transforms\8118552c4e6f32895370a71659937729\transformed\lifecycle-livedata-2.8.7\res
+com.example.babysitterfinder.app-annotation-experimental-1.4.1-35 C:\Users\benbi\.gradle\caches\8.9\transforms\88d0f1ebff8638b511cf3c481178ac47\transformed\annotation-experimental-1.4.1\res
+com.example.babysitterfinder.app-play-services-basement-18.4.0-36 C:\Users\benbi\.gradle\caches\8.9\transforms\8c9d5b66bda6ff83d227382618a9ba9b\transformed\play-services-basement-18.4.0\res
+com.example.babysitterfinder.app-ui-tooling-preview-release-37 C:\Users\benbi\.gradle\caches\8.9\transforms\8cd7e1bfb334a37a44cd45b5dce235bc\transformed\ui-tooling-preview-release\res
+com.example.babysitterfinder.app-ui-tooling-data-release-38 C:\Users\benbi\.gradle\caches\8.9\transforms\94d14bca05e3c284f25dbfe54125566c\transformed\ui-tooling-data-release\res
+com.example.babysitterfinder.app-tracing-1.2.0-39 C:\Users\benbi\.gradle\caches\8.9\transforms\9626ce34f6389ec01b4eae29c01a69a9\transformed\tracing-1.2.0\res
+com.example.babysitterfinder.app-play-services-maps-18.2.0-40 C:\Users\benbi\.gradle\caches\8.9\transforms\9fba012ce74b48ee462803a3061caa2d\transformed\play-services-maps-18.2.0\res
+com.example.babysitterfinder.app-activity-compose-1.9.3-41 C:\Users\benbi\.gradle\caches\8.9\transforms\a8f4389b643b6cced0ca7dac780d1ccc\transformed\activity-compose-1.9.3\res
+com.example.babysitterfinder.app-credentials-play-services-auth-1.2.0-rc01-42 C:\Users\benbi\.gradle\caches\8.9\transforms\aa8f1c41c97d8cfc43f1fdfd711d0c17\transformed\credentials-play-services-auth-1.2.0-rc01\res
+com.example.babysitterfinder.app-lifecycle-livedata-core-ktx-2.8.7-43 C:\Users\benbi\.gradle\caches\8.9\transforms\b3f57fc92ded58f87b6aefb20e5d8ae5\transformed\lifecycle-livedata-core-ktx-2.8.7\res
+com.example.babysitterfinder.app-material3-release-44 C:\Users\benbi\.gradle\caches\8.9\transforms\b63bda9e2b90341f55579c2762b28902\transformed\material3-release\res
+com.example.babysitterfinder.app-appcompat-resources-1.7.0-45 C:\Users\benbi\.gradle\caches\8.9\transforms\b7e9c41bd46ad0f88460f7d2db430dff\transformed\appcompat-resources-1.7.0\res
+com.example.babysitterfinder.app-ui-text-release-46 C:\Users\benbi\.gradle\caches\8.9\transforms\be9fe3a234f01c6c997a8147e734fea0\transformed\ui-text-release\res
+com.example.babysitterfinder.app-startup-runtime-1.1.1-47 C:\Users\benbi\.gradle\caches\8.9\transforms\bfa66cf4fdcf84718c0ec435bcc8999a\transformed\startup-runtime-1.1.1\res
+com.example.babysitterfinder.app-coordinatorlayout-1.1.0-48 C:\Users\benbi\.gradle\caches\8.9\transforms\c18d31c025b4b94136efca5167878247\transformed\coordinatorlayout-1.1.0\res
+com.example.babysitterfinder.app-transition-1.2.0-49 C:\Users\benbi\.gradle\caches\8.9\transforms\c5a9e79bc9c804f711f9b552aee7da04\transformed\transition-1.2.0\res
+com.example.babysitterfinder.app-foundation-layout-release-50 C:\Users\benbi\.gradle\caches\8.9\transforms\c89a53f9b59d12faeb57df8bb72ac8df\transformed\foundation-layout-release\res
+com.example.babysitterfinder.app-savedstate-1.2.1-51 C:\Users\benbi\.gradle\caches\8.9\transforms\c93e61eb5f80c07e90cc5495ecdb82d9\transformed\savedstate-1.2.1\res
+com.example.babysitterfinder.app-foundation-release-52 C:\Users\benbi\.gradle\caches\8.9\transforms\cce9eaa64a9320682a61db89f7665aa6\transformed\foundation-release\res
+com.example.babysitterfinder.app-activity-1.9.3-53 C:\Users\benbi\.gradle\caches\8.9\transforms\ce930b52ff08a6042efd9d3951ec2abe\transformed\activity-1.9.3\res
+com.example.babysitterfinder.app-core-runtime-2.2.0-54 C:\Users\benbi\.gradle\caches\8.9\transforms\cfb211dae6533be5a47d950f47318b87\transformed\core-runtime-2.2.0\res
+com.example.babysitterfinder.app-savedstate-ktx-1.2.1-55 C:\Users\benbi\.gradle\caches\8.9\transforms\d3228564c27c652e505bf8a100c3f478\transformed\savedstate-ktx-1.2.1\res
+com.example.babysitterfinder.app-ui-util-release-56 C:\Users\benbi\.gradle\caches\8.9\transforms\d49f35a77fa20bdf5a2aee9f742db837\transformed\ui-util-release\res
+com.example.babysitterfinder.app-appcompat-1.7.0-57 C:\Users\benbi\.gradle\caches\8.9\transforms\d644ad70569338f54507cd854fa76b6a\transformed\appcompat-1.7.0\res
+com.example.babysitterfinder.app-material-icons-core-release-58 C:\Users\benbi\.gradle\caches\8.9\transforms\dccae84fe6e8666771876b2a52e23b48\transformed\material-icons-core-release\res
+com.example.babysitterfinder.app-ui-test-manifest-1.6.6-59 C:\Users\benbi\.gradle\caches\8.9\transforms\e091b4b3abd6a8d84909f51c3507ab5b\transformed\ui-test-manifest-1.6.6\res
+com.example.babysitterfinder.app-ui-tooling-release-60 C:\Users\benbi\.gradle\caches\8.9\transforms\e2b2f143b0cb9d37b342f104c09a012a\transformed\ui-tooling-release\res
+com.example.babysitterfinder.app-core-common-2.0.3-61 C:\Users\benbi\.gradle\caches\8.9\transforms\e2c4adecc00ec672d711e7c08b029ebe\transformed\core-common-2.0.3\res
+com.example.babysitterfinder.app-material-release-62 C:\Users\benbi\.gradle\caches\8.9\transforms\ed5c0fd8e2da8a5de96d2228dedd8d3a\transformed\material-release\res
+com.example.babysitterfinder.app-ui-unit-release-63 C:\Users\benbi\.gradle\caches\8.9\transforms\ed876a9a5d7e4d68e889ba038051007b\transformed\ui-unit-release\res
+com.example.babysitterfinder.app-viewpager2-1.1.0-beta02-64 C:\Users\benbi\.gradle\caches\8.9\transforms\ee0afb0f1fdae27133cfb8d0b6a7566b\transformed\viewpager2-1.1.0-beta02\res
+com.example.babysitterfinder.app-google-services-65 C:\Users\benbi\Eden Project\BaybysitterFinder\app\build\generated\res\google-services\debug
+com.example.babysitterfinder.app-pngs-66 C:\Users\benbi\Eden Project\BaybysitterFinder\app\build\generated\res\pngs\debug
+com.example.babysitterfinder.app-resValues-67 C:\Users\benbi\Eden Project\BaybysitterFinder\app\build\generated\res\resValues\debug
+com.example.babysitterfinder.app-packageDebugResources-68 C:\Users\benbi\Eden Project\BaybysitterFinder\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.babysitterfinder.app-packageDebugResources-69 C:\Users\benbi\Eden Project\BaybysitterFinder\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.babysitterfinder.app-debug-70 C:\Users\benbi\Eden Project\BaybysitterFinder\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.babysitterfinder.app-debug-71 C:\Users\benbi\Eden Project\BaybysitterFinder\app\src\debug\res
+com.example.babysitterfinder.app-main-72 C:\Users\benbi\Eden Project\BaybysitterFinder\app\src\main\res

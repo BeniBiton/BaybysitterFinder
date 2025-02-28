@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">947594904916</string>
+    <string name="google_api_key" translatable="false">AIzaSyDzwHMFtEC0SzBOFrxSR54NK821fVY0lNQ</string>
+    <string name="google_app_id" translatable="false">1:947594904916:android:417fa1303a391c271bf4c1</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDzwHMFtEC0SzBOFrxSR54NK821fVY0lNQ</string>
+    <string name="google_storage_bucket" translatable="false">babysitter-finder-5e18d.firebasestorage.app</string>
+    <string name="project_id" translatable="false">babysitter-finder-5e18d</string>
+</resources>
