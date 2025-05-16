@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.acitvity_login);
 
 
-        authService = new FirebaseAuthService(); // create instance of db in my project
+        authService = new FirebaseAuthService();
         firestoreService = new FirestoreService();
 
         emailEditText = findViewById(R.id.emailEditText);

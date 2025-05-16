@@ -65,21 +65,19 @@ public class OwnFamilyProfile extends AppCompatActivity {
         String familyId = Objects.requireNonNull(authService.getCurrentUser()).getUid();
 
         Log.d("FamilyViewActivity", "Family ID: " + familyId);
-        firestore.collection("family").document(familyId)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-                        DocumentSnapshot document = task.getResult();
-                        Family family = document.toObject(Family.class);
-                        if (family != null) {
-                            displayFamilyProfile(family);
-                        } else {
-                            Toast.makeText(this, "Family profile not found", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(this, "Failed to load family profile", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        firestore.collection("family").document(familyId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult() != null) {
+                DocumentSnapshot document = task.getResult();
+                Family family = document.toObject(Family.class);
+                if (family != null) {
+                    displayFamilyProfile(family);
+                } else {
+                    Toast.makeText(this, "Family profile not found", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Failed to load family profile", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void displayFamilyProfile(Family family) {
@@ -105,27 +103,24 @@ public class OwnFamilyProfile extends AppCompatActivity {
     private void loadFamilyRating() {
         String familyId = Objects.requireNonNull(authService.getCurrentUser()).getUid();
 
-        firestore.collection("family").document(familyId)
-                .get()
-                .addOnSuccessListener(document -> {
-                    if (document.exists() && document.contains("rating") && document.contains("ratingCount")) {
-                        double totalRating = document.getDouble("rating");
-                        long ratingCount = document.getLong("ratingCount");
+        firestore.collection("family").document(familyId).get().addOnSuccessListener(document -> {
+            if (document.exists() && document.contains("rating") && document.contains("ratingCount")) {
+                double totalRating = document.getDouble("rating");
+                long ratingCount = document.getLong("ratingCount");
 
-                        if (ratingCount > 0) {
-                            float averageRating = (float) (totalRating / ratingCount);
-                            ratingBar.setRating(averageRating);
-                        } else {
-                            ratingBar.setRating(0);
-                        }
-                    } else {
-                        ratingBar.setRating(0);
-                    }
-                    ratingBar.setIsIndicator(true);
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Failed to load rating", Toast.LENGTH_SHORT).show();
-                });
+                if (ratingCount > 0) {
+                    float averageRating = (float) (totalRating / ratingCount);
+                    ratingBar.setRating(averageRating);
+                } else {
+                    ratingBar.setRating(0);
+                }
+            } else {
+                ratingBar.setRating(0);
+            }
+            ratingBar.setIsIndicator(true);
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Failed to load rating", Toast.LENGTH_SHORT).show();
+        });
     }
 
 

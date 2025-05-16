@@ -2,13 +2,10 @@ package com.example.babysitterfinder.services;
 
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.babysitterfinder.models.Babysitter;
 import com.example.babysitterfinder.models.Family;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,13 +23,10 @@ public class FirestoreService {
         this.firestore = FirebaseFirestore.getInstance();
     }
 
-    // this function is save the data of the userProfile on the store
-
     public void saveUserProfile(String userId, Map<String, Object> profileData, OnCompleteListener<Void> listener) {
         firestore.collection("users").document(userId).set(profileData).addOnCompleteListener(listener);
     }
 
-    // this function get a single user role from db
     public void getUserRole(String userId, OnCompleteListener<DocumentSnapshot> listener) {
         firestore.collection("users").document(userId).get().addOnCompleteListener(listener);
     }
@@ -72,7 +66,6 @@ public class FirestoreService {
                 });
     }
 
-
     public void getBabysitters(BabysitterCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("babysitter")
@@ -110,7 +103,9 @@ public class FirestoreService {
 
     }
 
-    public void fetchFavorites(String familyId, BabysitterCallback callback) {
+    // fix the names of the functions
+
+    public void fetchFavoritesFamilyService(String familyId, BabysitterCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("family").document(familyId)
@@ -147,7 +142,7 @@ public class FirestoreService {
                 .addOnFailureListener(callback::onFailure);
     }
 
-    public void fetchFavorites(String babysitterId, FamilyCallback callback) {
+    public void fetchFavoritesBabysitterService(String babysitterId, FamilyCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("babysitter").document(babysitterId)

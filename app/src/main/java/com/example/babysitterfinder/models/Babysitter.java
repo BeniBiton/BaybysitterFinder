@@ -13,16 +13,11 @@ public class Babysitter {
     private int phoneNumber;
     private String profilePictureUrl;
     private String firestoreDocumentId;
-    private float rating;
-    private int ratingCount;
-
-
     private List<String> favorites;
 
     public Babysitter() {
         this.favorites = new ArrayList<>();
-        this.rating = 0.0f;
-        this.ratingCount = 0;
+
     }
 
 
@@ -35,9 +30,6 @@ public class Babysitter {
         this.Experience = experience;
         this.phoneNumber = phoneNumber;
         this.profilePictureUrl = profilePictureUrl;
-        this.favorites = new ArrayList<>();
-        this.rating = 0.0f;
-        this.ratingCount = 0;
     }
 
     public String getName() {

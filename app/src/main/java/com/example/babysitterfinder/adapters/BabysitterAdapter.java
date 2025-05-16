@@ -69,22 +69,11 @@ public class BabysitterAdapter extends RecyclerView.Adapter<BabysitterAdapter.Vi
             clickListener.onClick(babysitterId);
         });
 
-
-        holder.itemView.setOnClickListener(view -> {
-            String babysitterId = babysitter.getFirestoreDocumentId();
-            clickListener.onClick(babysitterId);
-        });
     }
 
     @Override
     public int getItemCount() {
         return babysitterList.size();
-    }
-
-    public void updateList(List<Babysitter> newList) {
-        babysitterList.clear();
-        babysitterList.addAll(newList);
-        notifyDataSetChanged();
     }
 
 

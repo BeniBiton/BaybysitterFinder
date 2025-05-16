@@ -14,7 +14,7 @@ import com.example.babysitterfinder.services.FirestoreService;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class FamilyProfileActivity extends AppCompatActivity {
+public class FamilyCreationActivity extends AppCompatActivity {
     private EditText editTextFamilyName, editTextNumberOfChildren, editTextLocation, editTextChildrenAges, editTextFamilyDescription, editTextRegion;
 
     private Button buttonSubmitFamilyProfile;

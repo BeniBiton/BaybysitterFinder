@@ -116,7 +116,7 @@ public class HomeFamilyActivity extends AppCompatActivity {
 
     private void fetchFavoriteBabysitters() {
         FirestoreService firestoreService = new FirestoreService();
-        firestoreService.fetchFavorites(familyId, new FirestoreService.BabysitterCallback() {
+        firestoreService.fetchFavoritesFamilyService(familyId, new FirestoreService.BabysitterCallback() {
             @Override
             public void onSuccess(List<Babysitter> favoriteBabysitters) {
                 if (favoriteBabysitters.isEmpty()) {

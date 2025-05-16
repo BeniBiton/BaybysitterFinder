@@ -12,18 +12,21 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
 
     <application
         android:name=".BabysitterFinderApp"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="Babysitter Finder"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BabysitterFinder">
+
+<!--        <service android:name=".services.NotificationService" />-->
 
         <activity
             android:name=".activities.LoginActivity"
@@ -34,8 +37,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.RegistrationActivity" />
-        <activity android:name=".activities.BabysitterProfileActivity" />
-        <activity android:name=".activities.FamilyProfileActivity" />
+        <activity android:name=".activities.BabysitterCreationActivity" />
+        <activity android:name=".activities.FamilyCreationActivity" />
         <activity android:name=".activities.HomeFamilyActivity" />
         <activity android:name=".activities.HomeBabysitterActivity" />
         <activity android:name=".activities.BabysitterViewActivity" />

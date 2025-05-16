@@ -84,8 +84,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private void navigateToHomeScreen(String userType) {
         Toast.makeText(this, "Navigating to " + userType + " screen", Toast.LENGTH_SHORT).show();
         Intent intent = userType.equals("Babysitter") ?
-                new Intent(this, BabysitterProfileActivity.class) :
-                new Intent(this, FamilyProfileActivity.class);
+                new Intent(this, BabysitterCreationActivity.class) :
+                new Intent(this, FamilyCreationActivity.class);
 
         startActivity(intent);
         finish();

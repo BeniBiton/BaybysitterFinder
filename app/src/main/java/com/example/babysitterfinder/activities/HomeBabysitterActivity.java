@@ -40,7 +40,7 @@ public class HomeBabysitterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_babysitters);
 
         searchView = findViewById(R.id.searchViewBabysitter);
-        favoriteIcon = findViewById(R.id.favoritesFamilies);  // Changed from Button to ImageView
+        favoriteIcon = findViewById(R.id.favoritesFamilies);
         familyRecyclerView = findViewById(R.id.recyclerViewFamilies);
         familyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -114,7 +114,7 @@ public class HomeBabysitterActivity extends AppCompatActivity {
 
     private void fetchFavoriteFamilies() {
         FirestoreService firestoreService = new FirestoreService();
-        firestoreService.fetchFavorites(babysitterId, new FirestoreService.FamilyCallback() {
+        firestoreService.fetchFavoritesBabysitterService(babysitterId, new FirestoreService.FamilyCallback() {
             @Override
             public void onSuccess(List<Family> favoriteFamilies) {
                 if (favoriteFamilies.isEmpty()) {

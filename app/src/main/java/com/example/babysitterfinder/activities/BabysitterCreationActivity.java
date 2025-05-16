@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,10 +17,10 @@ import com.example.babysitterfinder.services.FirebaseStorageService;
 import com.example.babysitterfinder.services.FirestoreService;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class BabysitterProfileActivity extends AppCompatActivity {
+public class BabysitterCreationActivity extends AppCompatActivity {
     private EditText editTextName, editTextAge, editTextRegion, editTextBio, editTextAvailability, editTextExperience, editTextPhoneNumber;
     private Button buttonUploadPicture, buttonSubmitProfile;
-    private Uri selectedImageUri = null; // Store selected image URI
+    private Uri selectedImageUri = null;
     public static final int IMAGE_PICKER_REQUEST = 1000;
 
     @SuppressLint("MissingInflatedId")
