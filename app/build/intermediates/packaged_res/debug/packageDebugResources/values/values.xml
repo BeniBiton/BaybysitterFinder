@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="dark_gray">#686868</color>
+    <color name="darker_white">#E6E6E6</color>
+    <color name="gray">#808080</color>
+    <color name="holo_blue_dark">#1976D2</color>
+    <color name="light_gray">#D3D3D3</color>
+    <color name="primary">#090707</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="red">#C10505</color>
+    <color name="secondary">#FF9800</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Babysitter finder</string>
+    <string name="gcm_defaultSenderId" translatable="false">947594904916</string>
+    <string name="google_api_key" translatable="false">AIzaSyDzwHMFtEC0SzBOFrxSR54NK821fVY0lNQ</string>
+    <string name="google_app_id" translatable="false">1:947594904916:android:417fa1303a391c271bf4c1</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDzwHMFtEC0SzBOFrxSR54NK821fVY0lNQ</string>
+    <string name="google_storage_bucket" translatable="false">babysitter-finder-5e18d.firebasestorage.app</string>
+    <string name="project_id" translatable="false">babysitter-finder-5e18d</string>
+    <style name="CircularImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="RoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="StyledTextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.BabysitterFinder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorSecondary">@color/teal_200</item>
+
+        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+</resources>
