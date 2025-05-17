@@ -13,9 +13,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.babysitterfinder.API.RetrofitTranslateClient;
+import com.example.babysitterfinder.API.TranslationApiService;
 import com.example.babysitterfinder.R;
 import com.example.babysitterfinder.models.Babysitter;
+import com.example.babysitterfinder.models.TranslationRequest;
+import com.example.babysitterfinder.models.TranslationResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,8 +30,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class BabysitterViewActivity extends AppCompatActivity {
     private TextView viewName, viewAge, viewRegion, viewBio, viewAvailability, viewExperience, viewPhoneNumber;
+    private MaterialButton translateButton;
     private ImageView profileImage;
     private FloatingActionButton favoriteButton;
     private RatingBar ratingBar;
@@ -35,6 +45,9 @@ public class BabysitterViewActivity extends AppCompatActivity {
     private String babysitterId;
     private String currentUserId;
     private boolean isFavorite = false;
+
+    private final String TRANSLATE_API_KEY = "AIzaSyDv2kfsGkKJ3sA0SuTgjAzbMvUhi11AjMI";
+
 
 
     @Override
@@ -52,6 +65,7 @@ public class BabysitterViewActivity extends AppCompatActivity {
         profileImage = findViewById(R.id.babysitterImage);
         favoriteButton = findViewById(R.id.favoriteButton);
         ratingBar = findViewById(R.id.ratingBar);
+        translateButton = findViewById(R.id.buttonTranslateDescription);
 
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -90,6 +104,11 @@ public class BabysitterViewActivity extends AppCompatActivity {
             if (fromUser) {
                 saveRating(rating);
             }
+        });
+
+        translateButton.setOnClickListener(v -> {
+            String text = viewBio.getText().toString();
+            translateDescription(text);
         });
     }
 
@@ -130,6 +149,31 @@ public class BabysitterViewActivity extends AppCompatActivity {
                         }
                     } else {
                         Toast.makeText(this, "Error fetching babysitter data", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void translateDescription(String originalText) {
+        TranslationRequest request = new TranslationRequest(originalText, "en", "he");
+        TranslationApiService apiService = RetrofitTranslateClient.getTranslationService();
+
+        apiService.translateText(request, TRANSLATE_API_KEY)
+                .enqueue(new Callback<>() {
+                    @Override
+                    public void onResponse(Call<TranslationResponse> call, Response<TranslationResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            String translated = response.body().data.translations.get(0).translatedText;
+                            viewBio.setText(translated);
+                        } else {
+                            Toast.makeText(BabysitterViewActivity.this, "Translation failed", Toast.LENGTH_SHORT).show();
+                            Log.e("Translation", "Response error: " + response.errorBody());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<TranslationResponse> call, Throwable t) {
+                        Toast.makeText(BabysitterViewActivity.this, "Translation error", Toast.LENGTH_SHORT).show();
+                        Log.e("Translation", "Error", t);
                     }
                 });
     }

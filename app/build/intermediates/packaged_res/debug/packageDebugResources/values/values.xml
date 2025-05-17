@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background">#7FD1F2</color>
     <color name="black">#FF000000</color>
     <color name="dark_gray">#686868</color>
     <color name="darker_white">#E6E6E6</color>
@@ -12,7 +13,7 @@
     <color name="purple_700">#3700B3</color>
     <color name="red">#C10505</color>
     <color name="secondary">#FF9800</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#4FE2C9</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Babysitter finder</string>
@@ -36,11 +37,11 @@
         <item name="android:textStyle">bold</item>
     </style>
     <style name="Theme.BabysitterFinder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/teal_200</item>
+        <item name="colorPrimaryVariant">@color/teal_200</item>
         <item name="colorSecondary">@color/teal_200</item>
 
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/teal_200</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
 </resources>

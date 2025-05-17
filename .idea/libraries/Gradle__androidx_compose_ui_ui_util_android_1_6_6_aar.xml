@@ -1,11 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.compose.ui:ui-util-android:1.6.6@aar" external-system-id="GRADLE">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/8.9/transforms/d49f35a77fa20bdf5a2aee9f742db837/transformed/ui-util-release/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/8.9/transforms/d49f35a77fa20bdf5a2aee9f742db837/transformed/ui-util-release/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/8.9/transforms/d49f35a77fa20bdf5a2aee9f742db837/transformed/ui-util-release/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/8.11.1/transforms/dd708d44cd7a1db27059a899a186fe63/transformed/ui-util-release/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/8.11.1/transforms/dd708d44cd7a1db27059a899a186fe63/transformed/ui-util-release/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/8.11.1/transforms/dd708d44cd7a1db27059a899a186fe63/transformed/ui-util-release/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.compose.ui/ui-util-android/1.6.6/c226e92fd11dfab72261220b7ba604984aa8fbfb/ui-util-android-1.6.6-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

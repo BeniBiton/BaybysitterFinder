@@ -1,6 +1,5 @@
 package com.example.babysitterfinder.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RatingBar;
@@ -9,9 +8,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.babysitterfinder.API.RetrofitClientWeather;
+import com.example.babysitterfinder.API.RetrofitTranslateClient;
+import com.example.babysitterfinder.API.TranslationApiService;
+import com.example.babysitterfinder.API.WeatherApiService;
 import com.example.babysitterfinder.R;
 import com.example.babysitterfinder.models.Family;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.babysitterfinder.models.TranslationRequest;
+import com.example.babysitterfinder.models.TranslationResponse;
+import com.example.babysitterfinder.models.WeatherResponse;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -19,11 +25,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import java.util.List;
 
 
 public class FamilyViewActivity extends AppCompatActivity {
     private TextView viewName, viewNumOfChildren, viewLocation, viewChildrenAges, viewDescription, viewRegion;
+    private TextView weatherDescription;
+    private MaterialButton translateButton;
+
     private FirebaseFirestore firestore;
     private FirebaseAuth authService;
     private RatingBar ratingBar;
@@ -31,6 +44,9 @@ public class FamilyViewActivity extends AppCompatActivity {
     private String familyId;
     private String currentUserId;
     private boolean isFavorite = false;
+
+    private final String WEATHER_API_KEY = "e6aae810fa67a3b8cb473db07a8c7d87";
+    private final String TRANSLATE_API_KEY = "AIzaSyDv2kfsGkKJ3sA0SuTgjAzbMvUhi11AjMI";
 
 
     @Override
@@ -46,6 +62,8 @@ public class FamilyViewActivity extends AppCompatActivity {
         viewRegion = findViewById(R.id.region);
         ratingBar = findViewById(R.id.ratingBar);
         favoriteButton = findViewById(R.id.favoriteButton);
+        weatherDescription = findViewById(R.id.weatherDescription);
+        translateButton = findViewById(R.id.buttonTranslateDescription);
 
         firestore = FirebaseFirestore.getInstance();
         authService = FirebaseAuth.getInstance();
@@ -61,6 +79,11 @@ public class FamilyViewActivity extends AppCompatActivity {
             if (fromUser) {
                 saveRating(rating);
             }
+        });
+
+        translateButton.setOnClickListener(v -> {
+            String text = viewDescription.getText().toString();
+            translateDescription(text);
         });
     }
 
@@ -79,7 +102,6 @@ public class FamilyViewActivity extends AppCompatActivity {
                         if (family != null) {
                             displayFamilyProfile(family);
 
-                            // Fetch rating from Firestore
                             if (document.contains("rating") && document.contains("ratingCount")) {
                                 double rating = document.getDouble("rating");
                                 long ratingCount = document.getLong("ratingCount");
@@ -88,7 +110,7 @@ public class FamilyViewActivity extends AppCompatActivity {
                                     float averageRating = (float) (rating / ratingCount);
                                     ratingBar.setRating(averageRating);
                                 } else {
-                                    ratingBar.setRating(0);  // Default rating
+                                    ratingBar.setRating(0);
                                 }
                             }
                         } else {
@@ -99,6 +121,31 @@ public class FamilyViewActivity extends AppCompatActivity {
                     }
                 });
     }
+    private void translateDescription(String originalText) {
+        TranslationRequest request = new TranslationRequest(originalText, "en", "he");
+        TranslationApiService apiService = RetrofitTranslateClient.getTranslationService();
+
+        apiService.translateText(request, TRANSLATE_API_KEY)
+                .enqueue(new Callback<>() {
+                    @Override
+                    public void onResponse(Call<TranslationResponse> call, Response<TranslationResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            String translated = response.body().data.translations.get(0).translatedText;
+                            viewDescription.setText(translated);
+                        } else {
+                            Toast.makeText(FamilyViewActivity.this, "Translation failed", Toast.LENGTH_SHORT).show();
+                            Log.e("Translation", "Response error: " + response.errorBody());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<TranslationResponse> call, Throwable t) {
+                        Toast.makeText(FamilyViewActivity.this, "Translation error", Toast.LENGTH_SHORT).show();
+                        Log.e("Translation", "Error", t);
+                    }
+                });
+    }
+
 
 
     private void displayFamilyProfile(Family family) {
@@ -108,8 +155,40 @@ public class FamilyViewActivity extends AppCompatActivity {
         viewChildrenAges.setText(family.getChildrenAges());
         viewDescription.setText(family.getDescription());
         viewRegion.setText(family.getRegion());
+
+        fetchWeatherByCity(family.getLocation());
+
     }
 
+    private void fetchWeatherByCity(String cityName) {
+        if (cityName == null || cityName.isEmpty()) {
+            weatherDescription.setText("No city info for weather");
+            return;
+        }
+
+        WeatherApiService apiService = RetrofitClientWeather.getWeatherApiService();
+        apiService.getCurrentWeatherByCity(cityName, "metric", WEATHER_API_KEY)
+                .enqueue(new Callback<>() {
+                    @Override
+                    public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            WeatherResponse weather = response.body();
+                            String desc = weather.getWeather().get(0).getDescription();
+                            double temp = weather.getMain().getTemp();
+
+                            weatherDescription.setText(String.format("%s, %.1f°C", desc, temp));
+                        } else {
+                            weatherDescription.setText("Weather data unavailable");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WeatherResponse> call, Throwable t) {
+                        weatherDescription.setText("Error loading weather");
+                        Log.e("WeatherAPI", "Failed to fetch weather", t);
+                    }
+                });
+    }
     private void saveRating(float newRating) {
         if (familyId == null) return;
 

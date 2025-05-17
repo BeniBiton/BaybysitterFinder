@@ -74,6 +74,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
+                android:text="🌤 Weather At That Location"
+                android:textColor="@color/dark_gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/weatherDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loading weather..."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
                 android:text="🎂 Children Ages"
                 android:textColor="@color/dark_gray"
                 android:textSize="16sp" />
@@ -101,6 +118,19 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonTranslateDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="10dp"
+                android:text="תרגם תיאור"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/primary"
+                app:cornerRadius="16dp"
+                android:layout_gravity="start"/>
 
             <TextView
                 android:layout_width="match_parent"

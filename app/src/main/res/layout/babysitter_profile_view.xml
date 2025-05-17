@@ -79,6 +79,19 @@
                         android:text="📝 Bio: "
                         android:textSize="18sp" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonTranslateDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:padding="10dp"
+                        android:text="תרגם תיאור"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/primary"
+                        app:cornerRadius="16dp"
+                        android:layout_gravity="start"/>
+
                     <TextView
                         android:id="@+id/babysitterAvailability"
                         android:layout_width="match_parent"

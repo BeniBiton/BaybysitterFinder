@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.babysitterfinder.app-mergeDebugResources-68:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.babysitterfinder.app-mergeDebugResources-69:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\benbi\\.gradle\\caches\\8.9\\transforms\\d644ad70569338f54507cd854fa76b6a\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\benbi\\.gradle\\caches\\8.11.1\\transforms\\6e1532206ccfe0a032d87172224eec5c\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\benbi\\.gradle\\caches\\8.9\\transforms\\36339818ced8a0cddfad8cbf2156f48b\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\benbi\\.gradle\\caches\\8.11.1\\transforms\\d795e18e3be4b6f55d92280a60fe91d4\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

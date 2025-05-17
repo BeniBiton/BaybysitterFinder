@@ -1,5 +1,6 @@
 R_DEF: Internal format may change without notice
 local
+color background
 color black
 color dark_gray
 color darker_white
@@ -15,14 +16,17 @@ color secondary
 color teal_200
 color teal_700
 color white
+drawable ic_background_image
 drawable ic_favorite_border
 drawable ic_favorite_filled
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_logo
 drawable ic_logout
 drawable ic_navigation
 drawable ic_profile_placeholder
 drawable search_background
+font dnacing_script
 id babysitterAge
 id babysitterAvailability
 id babysitterBio
@@ -33,8 +37,10 @@ id babysitterName
 id babysitterPhoneNumber
 id babysitterRegion
 id bottom_navigation
+id buttonSelectAddress
 id buttonSubmitFamilyProfile
 id buttonSumbitProfile
+id buttonTranslateDescription
 id buttonUploadPicture
 id childrenAges
 id confirmPasswordEditText
@@ -78,6 +84,7 @@ id textViewFamilyName
 id textViewFamilyNumOfChildren
 id titleTextView
 id userRoleGroup
+id weatherDescription
 layout acitvity_login
 layout activity_babysitter_profile
 layout activity_family_profile

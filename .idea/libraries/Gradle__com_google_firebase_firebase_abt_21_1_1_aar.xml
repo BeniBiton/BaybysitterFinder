@@ -1,13 +1,17 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-abt:21.1.1@aar" external-system-id="GRADLE">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/8.9/transforms/4be8a255f507ae17a77fce108603e7b9/transformed/firebase-abt-21.1.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/8.11.1/transforms/c725ab54dec0efd8146188211c5209a4/transformed/firebase-abt-21.1.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/8.9/transforms/4be8a255f507ae17a77fce108603e7b9/transformed/firebase-abt-21.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/8.9/transforms/4be8a255f507ae17a77fce108603e7b9/transformed/firebase-abt-21.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/8.11.1/transforms/c725ab54dec0efd8146188211c5209a4/transformed/firebase-abt-21.1.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/8.11.1/transforms/c725ab54dec0efd8146188211c5209a4/transformed/firebase-abt-21.1.1/jars/classes.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-abt/21.1.1/2ad9f57737626fc6701a297eb1ce2180b1862d97/firebase-abt-21.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-abt/21.1.1/d4c5473299cbc8ac8b0f5f7950b7fb7564a91d48/firebase-abt-21.1.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

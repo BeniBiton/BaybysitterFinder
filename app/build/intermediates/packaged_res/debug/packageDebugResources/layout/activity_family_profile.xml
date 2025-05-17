@@ -81,15 +81,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="Location"
+                    android:hint="Location Address (use selector)"
                     app:boxStrokeColor="@color/primary">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextLocationAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:focusable="false"
+                        android:clickable="false" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSelectAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Choose adress from google"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/primary"
+                    android:textSize="14sp"
+                    app:cornerRadius="16dp"
+                    android:padding="10dp" />
+
+                <!-- 👆 סוף תוספות הקשורות לכתובת -->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

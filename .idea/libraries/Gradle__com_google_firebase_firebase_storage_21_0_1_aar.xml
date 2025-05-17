@@ -1,13 +1,15 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-storage:21.0.1@aar" external-system-id="GRADLE">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/8.9/transforms/0471fd50cb91c13ed8b52d984113ea58/transformed/firebase-storage-21.0.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/8.11.1/transforms/02a3387691c39bd5086392c9afc16e3d/transformed/firebase-storage-21.0.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/8.9/transforms/0471fd50cb91c13ed8b52d984113ea58/transformed/firebase-storage-21.0.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/8.9/transforms/0471fd50cb91c13ed8b52d984113ea58/transformed/firebase-storage-21.0.1/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/8.11.1/transforms/02a3387691c39bd5086392c9afc16e3d/transformed/firebase-storage-21.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/8.11.1/transforms/02a3387691c39bd5086392c9afc16e3d/transformed/firebase-storage-21.0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-storage/21.0.1/c51a5e3e4935e5c2c65851d522968e573f0ac40c/firebase-storage-21.0.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
